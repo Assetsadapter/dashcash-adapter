@@ -13,17 +13,17 @@
  * GNU Lesser General Public License for more details.
  */
 
-package dash
+package dashcash
 
 import (
 	"github.com/blocktree/bitcoin-adapter/bitcoin"
-	"github.com/blocktree/go-owcdrivers/btcTransaction"
+	"github.com/blocktree/go-owcdrivers/btcTransactionv1"
 	"github.com/blocktree/openwallet/log"
 )
 
 var (
-	MainNetAddressPrefix = btcTransaction.DASHMainnetAddressPrefix
-	TestNetAddressPrefix = btcTransaction.DASHTestnetAddressPrefix
+	MainNetAddressPrefix =  btcTransaction.AddressPrefix{[]byte{0x1e}, nil,[]byte{0x10}, "bc"}
+	TestNetAddressPrefix = MainNetAddressPrefix
 )
 type WalletManager struct {
 	*bitcoin.WalletManager
@@ -33,9 +33,7 @@ func NewWalletManager() *WalletManager {
 	wm := WalletManager{}
 	wm.WalletManager = bitcoin.NewWalletManager()
 	wm.Config = bitcoin.NewConfig(Symbol, CurveType, Decimals)
-	wm.Config.MainNetAddressPrefix = MainNetAddressPrefix
-	wm.Config.TestNetAddressPrefix = TestNetAddressPrefix
-	//wm.TxDecoder = NewTransactionDecoder(&wm)
+	wm.TxDecoder = NewTransactionDecoder(&wm)
 	wm.Decoder = NewAddressDecoder(&wm)
 	wm.Log = log.NewOWLogger(wm.Symbol())
 	return &wm

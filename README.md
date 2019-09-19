@@ -1,6 +1,6 @@
-# dash-adapter
+# dashcash-adapter
 
-dash-adapter适配了地址解码器 其它的沿用bitcoin适配器代码
+dashcash-adapter适配了地址解码器 其它的沿用bitcoin适配器代码
 
 ## 项目依赖库
 

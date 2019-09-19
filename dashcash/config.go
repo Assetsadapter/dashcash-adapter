@@ -13,7 +13,7 @@
  * GNU Lesser General Public License for more details.
  */
 
-package dash
+package dashcash
 
 import (
 	"github.com/blocktree/go-owcrypt"
@@ -32,8 +32,8 @@ import (
 
 const (
 	//币种
-	Symbol    = "DASH"
-	MasterKey = "DASH seed"
+	Symbol    = "DSC"
+	MasterKey = "DASHCASH seed"
 	CurveType = owcrypt.ECC_CURVE_SECP256K1
 	Decimals  = int32(8)
 	RPCServerCore = 0

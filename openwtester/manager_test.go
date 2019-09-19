@@ -28,7 +28,7 @@ func testInitWalletManager() *openw.WalletManager {
 
 func TestWalletManager_CreateWallet(t *testing.T) {
 	tm := testInitWalletManager()
-	w := &openwallet.Wallet{Alias: "HELLO DASH", IsTrust: true, Password: "12345678"}
+	w := &openwallet.Wallet{Alias: "HELLO DASHcash", IsTrust: true, Password: "12345678"}
 	nw, key, err := tm.CreateWallet(testApp, w)
 	if err != nil {
 		log.Error(err)
@@ -44,7 +44,7 @@ func TestWalletManager_GetWalletInfo(t *testing.T) {
 
 	tm := testInitWalletManager()
 
-	wallet, err := tm.GetWalletInfo(testApp, "WGe5KPhw5RoikvCxgEk76emZ8PNtoPPBgh")
+	wallet, err := tm.GetWalletInfo(testApp, "WGhoSL4RAnskSF2HDiCZbMrxHgvJueqTRH")
 	if err != nil {
 		log.Error("unexpected error:", err)
 		return
@@ -72,9 +72,9 @@ func TestWalletManager_GetWalletList(t *testing.T) {
 func TestWalletManager_CreateAssetsAccount(t *testing.T) {
 
 	tm := testInitWalletManager()
-	walletID := "WGe5KPhw5RoikvCxgEk76emZ8PNtoPPBgh"
+	walletID := "WGhoSL4RAnskSF2HDiCZbMrxHgvJueqTRH"
 	//walletID := "WGe5KPhw5RoikvCxgEk76emZ8PNtoPPBgh"
-	account := &openwallet.AssetsAccount{Alias: "mainnetBTC", WalletID: walletID, Required: 1, Symbol: "DASH", IsTrust: true}
+	account := &openwallet.AssetsAccount{Alias: "mainnetBTC", WalletID: walletID, Required: 1, Symbol: "DSC", IsTrust: true}
 	account, address, err := tm.CreateAssetsAccount(testApp, walletID, "12345678", account, nil)
 	if err != nil {
 		log.Error(err)
@@ -91,7 +91,7 @@ func TestWalletManager_GetAssetsAccountList(t *testing.T) {
 
 	tm := testInitWalletManager()
 
-	walletID := "WGe5KPhw5RoikvCxgEk76emZ8PNtoPPBgh"
+	walletID := "WGhoSL4RAnskSF2HDiCZbMrxHgvJueqTRH"
 	list, err := tm.GetAssetsAccountList(testApp, walletID, 0, 10000000)
 	if err != nil {
 		log.Error("unexpected error:", err)
@@ -112,8 +112,8 @@ func TestWalletManager_CreateAddress(t *testing.T) {
 
 	//walletID := "WGe5KPhw5RoikvCxgEk76emZ8PNtoPPBgh"
 	//accountID := "FqQBQ8Bn26GogR7UAu6e2ZVhrYYmKUpmBS7CSM1KLTTZ"
-	walletID := "WGe5KPhw5RoikvCxgEk76emZ8PNtoPPBgh"
-	accountID := "33LEEmDcZG18TcY6qBhMMyrZZ5hLi2fnwmQ3TdjxfBrR"
+	walletID := "WGhoSL4RAnskSF2HDiCZbMrxHgvJueqTRH"
+	accountID := "D37Xn9Bv4yn4ZPq3Na18uDZzPXXXJjJgnPM8seH3TUZe"
 	address, err := tm.CreateAddress(testApp, walletID, accountID, 4)
 	if err != nil {
 		log.Error(err)

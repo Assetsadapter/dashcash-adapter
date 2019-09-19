@@ -13,7 +13,7 @@
  * GNU Lesser General Public License for more details.
  */
 
-package dash
+package dashcash
 
 import (
 	"fmt"
@@ -75,12 +75,7 @@ func (decoder *addressDecoder) PrivateKeyToWIF(priv []byte, isTestnet bool) (str
 //PublicKeyToAddress 公钥转地址
 func (decoder *addressDecoder) PublicKeyToAddress(pub []byte, isTestnet bool) (string, error) {
 
-	cfg := addressEncoder.DASH_mainnetAddressP2PKH
-	if decoder.wm.Config.IsTestNet {
-		cfg = addressEncoder.DASH_testnetAddressP2PKH
-	}
-
-
+	cfg := addressEncoder.DSC_mainnetAddressP2PKH
 
 	pkHash := owcrypt.Hash(pub, 0, owcrypt.HASH_ALG_HASH160)
 
