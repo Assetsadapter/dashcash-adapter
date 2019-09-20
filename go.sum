@@ -46,6 +46,8 @@ github.com/blocktree/go-owcdrivers v1.0.24/go.mod h1:iyyJs7nj3LyRGjcoLnIpUK6238G
 github.com/blocktree/go-owcdrivers v1.0.37/go.mod h1:ZhndO+bVH1s39I/ECFg2lHwo6OuTI3xfXS2w06rTJtU=
 github.com/blocktree/go-owcdrivers v1.0.39/go.mod h1:ZhndO+bVH1s39I/ECFg2lHwo6OuTI3xfXS2w06rTJtU=
 github.com/blocktree/go-owcdrivers v1.0.42/go.mod h1:icMC6RUkkOp+Zw9jRZ+x+TCwSosX2v2rT9aePeyn+4E=
+github.com/blocktree/go-owcdrivers v1.1.11 h1:8FP/zUZ/DIYPaxtVaER/jB/iubp30YwFW1GFcO1ex7Q=
+github.com/blocktree/go-owcdrivers v1.1.11/go.mod h1:Ob+XKMlsFIT+c+1vd9bnBbTiMWn78BPFqFf3w4XUHTI=
 github.com/blocktree/go-owcrypt v1.0.1/go.mod h1:5FCinL/4XVEqbmAFTOUgfMJVNJEw6WzVy624qsxzZC8=
 github.com/blocktree/go-owcrypt v1.0.2/go.mod h1:5FCinL/4XVEqbmAFTOUgfMJVNJEw6WzVy624qsxzZC8=
 github.com/blocktree/go-owcrypt v1.0.3 h1:qfAwJsWYp7WaI26hAwPuFUrMXhD9bWwuGXYWBOLsVes=
@@ -101,6 +103,8 @@ github.com/couchbase/gomemcached v0.0.0-20181122193126-5125a94a666c/go.mod h1:sr
 github.com/couchbase/goutils v0.0.0-20180530154633-e865a1461c8a/go.mod h1:BQwMFlJzDjFDG3DJUdU0KORxn88UlsOULuxLExMh3Hs=
 github.com/cupcake/rdb v0.0.0-20161107195141-43ba34106c76/go.mod h1:vYwsqCOLxGiisLwp9rITslkFNpZD5rz43tf41QFkTWY=
 github.com/cweill/gotests v1.5.3/go.mod h1:XZYOJkGVkCRoymaIzmp9Wyi3rUgfA3oOnkuljYrjFV8=
+github.com/cyberskycat/go-owcdrivers v1.1.22 h1:TL32NjfxZ+2i8A9FYORRzUK+fiokJ6xaKdfTcSWQWbg=
+github.com/cyberskycat/go-owcdrivers v1.1.22/go.mod h1:CjdcYlGH0NNX40XzOTjr/y7sMqzG9iV+NTn9iW0dawg=
 github.com/davecgh/go-spew v0.0.0-20171005155431-ecdeabc65495/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=

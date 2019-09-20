@@ -19,8 +19,8 @@ import (
 	"fmt"
 	"github.com/blocktree/openwallet/openwallet"
 
-	"github.com/blocktree/go-owcdrivers/addressEncoder"
 	"github.com/blocktree/go-owcrypt"
+	"github.com/cyberskycat/go-owcdrivers/addressEncoder"
 )
 
 func init() {

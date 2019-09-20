@@ -17,8 +17,8 @@ package dashcash
 
 import (
 	"github.com/blocktree/bitcoin-adapter/bitcoin"
-	"github.com/blocktree/go-owcdrivers/btcTransactionv1"
 	"github.com/blocktree/openwallet/log"
+	"github.com/cyberskycat/go-owcdrivers/btcTransactionv1"
 )
 
 var (
