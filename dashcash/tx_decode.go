@@ -1014,18 +1014,20 @@ func (decoder *TransactionDecoder) CreateBTCSummaryRawTransaction(wrapper openwa
 	if err != nil {
 		return nil, err
 	}
-
+	sumAllAmout := decimal.Zero
 	for _, addrBalance := range addrBalanceArray {
 		decoder.wm.Log.Debugf("addrBalance: %+v", addrBalance)
 		//检查余额是否超过最低转账
 		addrBalance_dec, _ := decimal.NewFromString(addrBalance.Balance)
 		if addrBalance_dec.GreaterThan(minTransfer) {
 			decoder.wm.Log.Debugf("%v sumAddrBalance: %+v",sumRawTx.Coin.Symbol, addrBalance)
+			sumAllAmout = sumAllAmout.Add(addrBalance_dec)
 			//添加到转账地址数组
 			sumAddresses = append(sumAddresses, addrBalance.Address)
 		}
 	}
 	decoder.wm.Log.Debugf("%v sumBeforeAddr: %+v",sumRawTx.Coin.Symbol,len(addrBalanceArray))
+	decoder.wm.Log.Debugf("%v sumAddrLen: %+v sumALlAmount: %+v",sumRawTx.Coin.Symbol,len(sumAddresses),sumAllAmout)
 
 	if len(sumAddresses) == 0 {
 		return nil, nil
@@ -1044,16 +1046,13 @@ func (decoder *TransactionDecoder) CreateBTCSummaryRawTransaction(wrapper openwa
 	sumUnspents = make([]*bitcoin.Unspent, 0)
 	outputAddrs = make(map[string]decimal.Decimal, 0)
 	totalInputAmount = decimal.Zero
-	decoder.wm.Log.Debugf("%v sumAddrLen: %+v",sumRawTx.Coin.Symbol,len(sumAddresses))
 	for i, addr := range sumAddresses {
 
 		unspents, err := decoder.wm.ListUnspent(sumRawTx.Confirms, addr)
+		decoder.wm.Log.Debugf("address: %+v unspent_len: %v index:%v",addr,len(unspents),i)
 		if err != nil {
 			return nil, err
 		}
-
-		//保留1个omni的最低转账成本的utxo 用于汇总omni
-		unspents = decoder.keepOmniCostUTXONotToUse(unspents)
 
 		//尽可能筹够最大input数
 		if len(unspents)+len(sumUnspents) < decoder.wm.Config.MaxTxInputs {
