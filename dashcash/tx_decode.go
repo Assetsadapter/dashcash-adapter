@@ -1055,7 +1055,7 @@ func (decoder *TransactionDecoder) CreateBTCSummaryRawTransaction(wrapper openwa
 		}
 
 		//尽可能筹够最大input数
-		if len(unspents)+len(sumUnspents) < decoder.wm.Config.MaxTxInputs {
+		if len(unspents)+len(sumUnspents) < decoder.wm.Config.MaxTxInputs*3 {
 			sumUnspents = append(sumUnspents, unspents...)
 			//if retainedBalance.GreaterThan(decimal.Zero) {
 			//	outputAddrs = appendOutput(outputAddrs, addr, retainedBalance)
