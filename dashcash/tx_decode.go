@@ -1020,6 +1020,7 @@ func (decoder *TransactionDecoder) CreateBTCSummaryRawTransaction(wrapper openwa
 		//检查余额是否超过最低转账
 		addrBalance_dec, _ := decimal.NewFromString(addrBalance.Balance)
 		if addrBalance_dec.GreaterThanOrEqual(minTransfer) {
+			decoder.wm.Log.Debugf("%v sumAddrBalance: %+v",sumRawTx.Coin.Symbol, addrBalance)
 			//添加到转账地址数组
 			sumAddresses = append(sumAddresses, addrBalance.Address)
 		}
@@ -1042,7 +1043,7 @@ func (decoder *TransactionDecoder) CreateBTCSummaryRawTransaction(wrapper openwa
 	sumUnspents = make([]*bitcoin.Unspent, 0)
 	outputAddrs = make(map[string]decimal.Decimal, 0)
 	totalInputAmount = decimal.Zero
-
+	decoder.wm.Log.Debugf("%v sumAddrLen: %+v",sumRawTx.Coin.Symbol,len(sumAddresses))
 	for i, addr := range sumAddresses {
 
 		unspents, err := decoder.wm.ListUnspent(sumRawTx.Confirms, addr)
