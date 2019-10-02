@@ -1019,12 +1019,13 @@ func (decoder *TransactionDecoder) CreateBTCSummaryRawTransaction(wrapper openwa
 		decoder.wm.Log.Debugf("addrBalance: %+v", addrBalance)
 		//检查余额是否超过最低转账
 		addrBalance_dec, _ := decimal.NewFromString(addrBalance.Balance)
-		if addrBalance_dec.GreaterThanOrEqual(minTransfer) {
+		if addrBalance_dec.GreaterThan(minTransfer) {
 			decoder.wm.Log.Debugf("%v sumAddrBalance: %+v",sumRawTx.Coin.Symbol, addrBalance)
 			//添加到转账地址数组
 			sumAddresses = append(sumAddresses, addrBalance.Address)
 		}
 	}
+	decoder.wm.Log.Debugf("%v sumBeforeAddr: %+v",sumRawTx.Coin.Symbol,len(addrBalanceArray))
 
 	if len(sumAddresses) == 0 {
 		return nil, nil
@@ -1098,6 +1099,8 @@ func (decoder *TransactionDecoder) CreateBTCSummaryRawTransaction(wrapper openwa
 			//decoder.wm.Log.Debugf("retainedBalanceTotal: %v", retainedBalanceTotal)
 			decoder.wm.Log.Debugf("fees: %v", fees)
 			decoder.wm.Log.Debugf("sumAmount: %v", sumAmount)
+			decoder.wm.Log.Debugf("sumIndex : %v",i)
+			decoder.wm.Log.Debugf("sumMaxInput: %v",decoder.wm.Config.MaxTxInputs)
 
 			if sumAmount.GreaterThan(decimal.Zero) {
 
