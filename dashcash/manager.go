@@ -33,7 +33,7 @@ func NewWalletManager() *WalletManager {
 	wm := WalletManager{}
 	wm.WalletManager = bitcoin.NewWalletManager()
 	wm.Config = bitcoin.NewConfig(Symbol, CurveType, Decimals)
-	wm.Config.MaxTxInputs = 50
+	wm.Config.MaxTxInputs = 100
 	wm.TxDecoder = NewTransactionDecoder(&wm)
 	wm.Decoder = NewAddressDecoder(&wm)
 	wm.Log = log.NewOWLogger(wm.Symbol())
