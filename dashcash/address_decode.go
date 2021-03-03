@@ -83,13 +83,13 @@ func (decoder *addressDecoder) PublicKeyToAddress(pub []byte, isTestnet bool) (s
 
 	address := addressEncoder.AddressEncode(pkHash, cfg)
 
-	//if decoder.wm.Config.RPCServerType == RPCServerCore {
-	//	//如果使用core钱包作为全节点，需要导入地址到core，这样才能查询地址余额和utxo
-	//	err := decoder.wm.ImportAddress(address, "")
-	//	if err != nil {
-	//		return "", err
-	//	}
-	//}
+	if decoder.wm.Config.RPCServerType == RPCServerCore {
+		//如果使用core钱包作为全节点，需要导入地址到core，这样才能查询地址余额和utxo
+		err := decoder.wm.ImportAddress(address, "")
+		if err != nil {
+			return "", err
+		}
+	}
 
 	return address, nil
 
