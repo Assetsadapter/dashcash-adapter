@@ -22,7 +22,7 @@ import (
 )
 
 var (
-	MainNetAddressPrefix =  btcTransaction.AddressPrefix{[]byte{0x1e}, nil,[]byte{0x10}, "bc"}
+	MainNetAddressPrefix =  btcTransaction.AddressPrefix{[]byte{0x17}, nil,[]byte{0x10}, "bc"}
 	TestNetAddressPrefix = MainNetAddressPrefix
 )
 type WalletManager struct {
