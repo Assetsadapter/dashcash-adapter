@@ -71,23 +71,25 @@ func (decoder *addressDecoder) PrivateKeyToWIF(priv []byte, isTestnet bool) (str
 	return wif, nil
 
 }
+const  BTCAlphabet        = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+var DSC_mainnetAddressP2PKH         = addressEncoder.AddressType{"base58", BTCAlphabet, "doubleSHA256", "h160", 20, []byte{0x17}, nil}
 
 //PublicKeyToAddress 公钥转地址
 func (decoder *addressDecoder) PublicKeyToAddress(pub []byte, isTestnet bool) (string, error) {
 
-	cfg := addressEncoder.DSC_mainnetAddressP2PKH
+	cfg := DSC_mainnetAddressP2PKH
 
 	pkHash := owcrypt.Hash(pub, 0, owcrypt.HASH_ALG_HASH160)
 
 	address := addressEncoder.AddressEncode(pkHash, cfg)
 
-	if decoder.wm.Config.RPCServerType == RPCServerCore {
-		//如果使用core钱包作为全节点，需要导入地址到core，这样才能查询地址余额和utxo
-		err := decoder.wm.ImportAddress(address, "")
-		if err != nil {
-			return "", err
-		}
-	}
+	//if decoder.wm.Config.RPCServerType == RPCServerCore {
+	//	//如果使用core钱包作为全节点，需要导入地址到core，这样才能查询地址余额和utxo
+	//	err := decoder.wm.ImportAddress(address, "")
+	//	if err != nil {
+	//		return "", err
+	//	}
+	//}
 
 	return address, nil
 
